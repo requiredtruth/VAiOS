@@ -9,24 +9,33 @@
     "kind": { "const": "vaios-app-package" },
     "extension": { "const": "vaios" },
     "version": { "const": 1 },
+    "createdAt": { "type": "string" },
+    "desktop": { "type": "string" },
+    "folder": { "type": "string", "pattern": "^/(Apps|Widgets)/" },
     "item": {
       "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "name", "categories", "icon", "type", "size", "desktopIcon", "html"],
+      "additionalProperties": true,
+      "required": ["id", "name", "icon", "type", "desktopIcon", "html"],
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$" },
         "name": { "type": "string", "minLength": 1 },
+        "entryName": { "type": "string", "minLength": 1 },
+        "category1": { "type": "string", "minLength": 1 },
+        "category2": { "type": "string", "minLength": 1 },
         "categories": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
         "icon": { "type": "string", "minLength": 1 },
         "type": { "type": "string", "minLength": 1 },
         "size": { "type": "integer", "minimum": 0 },
+        "htmlSize": { "type": "integer", "minimum": 0 },
+        "preferredWidth": { "type": "number", "minimum": 120 },
+        "preferredHeight": { "type": "number", "minimum": 90 },
         "desktopIcon": { "type": "boolean" },
         "html": { "const": "" }
       }
     },
     "files": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": { "type": "string" },
       "required": ["index.html"],
       "properties": {
         "index.html": { "type": "string", "minLength": 1 },
