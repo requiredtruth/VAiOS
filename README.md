@@ -3,7 +3,7 @@
 VAiOS is the original local-first virtual AI desktop restored from its standalone implementation. It creates and edits complete HTML apps and widgets, installs `.vaios` packages, stores large source in IndexedDB, mirrors apps into a virtual filesystem, and exports complete JSONL restore images.
 
 ```sh
-./doit.sh
+./install.sh
 ```
 
 The verification command has no dependency install step. It syntax-checks the browser modules and runs the Node test suite.
