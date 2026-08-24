@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/vaios-package.schema.json",
+  "title": "VAiOS application package v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "extension", "version", "item", "files"],
+  "properties": {
+    "kind": { "const": "vaios-app-package" },
+    "extension": { "const": "vaios" },
+    "version": { "const": 1 },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "categories", "icon", "type", "size", "desktopIcon", "html"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "categories": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "icon": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "minLength": 1 },
+        "size": { "type": "integer", "minimum": 0 },
+        "desktopIcon": { "type": "boolean" },
+        "html": { "const": "" }
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index.html"],
+      "properties": {
+        "index.html": { "type": "string", "minLength": 1 },
+        "manifest.json": { "type": "string" },
+        "item.json": { "type": "string" },
+        "readme.txt": { "type": "string" }
+      }
+    }
+  }
+}
