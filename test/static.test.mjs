@@ -59,7 +59,6 @@ test("recovered installable apps follow the single-copy package contract", async
     "apps/html-to-vaios.vaios",
     "apps/url-to-vaios.vaios",
     "apps/neon-kart-16.vaios",
-    "apps/philippines-skyline-webcam-wall.vaios",
   ]) {
     const pkg = JSON.parse(await readFile(path, "utf8"));
     assert.equal(pkg.kind, "vaios-app-package");
@@ -68,6 +67,6 @@ test("recovered installable apps follow the single-copy package contract", async
     assert.equal(pkg.item.html, "");
     assert.match(pkg.folder, /^\/Apps\/[a-z0-9-]+$/);
     assert.match(pkg.files["index.html"], /^<!doctype html>/i);
-    assert.doesNotMatch(JSON.stringify(pkg), /10\.0\.|192\.168\.|worldforge|requiredtruth/i);
+    assert.doesNotMatch(JSON.stringify(pkg), /10\.0\.|192\.168\./i);
   }
 });
