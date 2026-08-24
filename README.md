@@ -17,6 +17,15 @@ The verification command has no dependency install step. It syntax-checks the br
 
 The primary desktop is a standalone HTML application. Its **New App**, **URL to VAiOS**, and **HTML to VAiOS** tools create installable apps and widgets. AI creation and versioned editing are optional and use only the OpenAI-compatible endpoint explicitly saved in Settings; direct HTML/package export remains available without AI.
 
+The `apps/` directory preserves installable owner-authored packages recovered with the desktop. Import any `.vaios` file through **App Manager** or **Mass Import .vaios**:
+
+- **HTML to VAiOS** — converts a self-contained HTML document into a single-copy `.vaios` package and can optionally ask a user-configured local OpenAI-compatible endpoint for SVG/metadata.
+- **URL to VAiOS** — packages a URL-backed app with sandbox-aware metadata and the same optional local endpoint workflow.
+- **Neon Kart 16** — a self-contained original browser game used as a pointer-lock/fullscreen package example.
+- **Philippines Skyline Webcam Wall** — a blind-iframe layout example that embeds public SkylineWebcams pages without bundling streams, tokens, or media.
+
+Remote pages may block iframe embedding, change URLs, or impose their own terms. The repository does not bypass those controls. Third-party game launchers recovered nearby were intentionally not published because their redistribution rights were not established.
+
 ## Working features
 
 - Nine built-in desktop apps: Task Manager, New App, URL to VAiOS, HTML to VAiOS, App Manager, Widget Manager, Settings, Backups, and Text Editor.

@@ -53,3 +53,21 @@ test("complete v6 restore validates records and app hashes before mutation", asy
   assert.ok(validation < firstLocalStorageWrite);
   assert.match(source, /app byte count or SHA-256 mismatch/);
 });
+
+test("recovered installable apps follow the single-copy package contract", async () => {
+  for (const path of [
+    "apps/html-to-vaios.vaios",
+    "apps/url-to-vaios.vaios",
+    "apps/neon-kart-16.vaios",
+    "apps/philippines-skyline-webcam-wall.vaios",
+  ]) {
+    const pkg = JSON.parse(await readFile(path, "utf8"));
+    assert.equal(pkg.kind, "vaios-app-package");
+    assert.equal(pkg.version, 1);
+    assert.equal(pkg.item.type, "app");
+    assert.equal(pkg.item.html, "");
+    assert.match(pkg.folder, /^\/Apps\/[a-z0-9-]+$/);
+    assert.match(pkg.files["index.html"], /^<!doctype html>/i);
+    assert.doesNotMatch(JSON.stringify(pkg), /10\.0\.|192\.168\.|worldforge|requiredtruth/i);
+  }
+});
