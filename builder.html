@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VAiOS Package Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="builder-page">
+  <main class="builder-shell">
+    <section class="builder-form">
+      <h1>HTML → .vaios</h1>
+      <p>Package a complete self-contained HTML document. Export is direct; it never invokes an LLM or reskin.</p>
+      <form id="build-form">
+        <label>HTML file <input id="html-file" type="file" accept=".html,.htm,text/html" required></label>
+        <label>Name <input id="name" maxlength="80" required></label>
+        <label>Stable ID <input id="id" pattern="[a-z][a-z0-9-]{1,63}" required></label>
+        <label>Categories <input id="categories" value="Tools" placeholder="Tools, Offline" required></label>
+        <label>Icon <input id="icon" value="🧩" maxlength="8" required></label>
+        <label>Type <select id="type"><option>app</option><option>widget</option><option>game</option></select></label>
+        <label><input id="desktop-icon" type="checkbox" checked> Show desktop icon</label>
+        <button type="submit">Download .vaios package</button>
+      </form>
+      <output id="status" aria-live="polite">Choose an HTML file.</output>
+      <a href="index.html">Return to desktop</a>
+    </section>
+    <iframe id="preview" title="Imported HTML preview" sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-modals" allow="fullscreen; pointer-lock; gamepad; autoplay; clipboard-read; clipboard-write" allowfullscreen></iframe>
+  </main>
+  <script type="module" src="src/builder.mjs"></script>
+</body>
+</html>

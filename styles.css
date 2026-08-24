@@ -1,0 +1,25 @@
+:root { --accent: #65d5ff; --ink: #eef7ff; --panel: rgba(10, 19, 34, .94); --line: rgba(255,255,255,.18); font: 15px/1.4 system-ui, sans-serif; color: var(--ink); }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; overflow: hidden; background: #07111f; }
+body[data-wallpaper="midnight"] #desktop { background: radial-gradient(circle at 75% 20%, #17385c, transparent 34%), linear-gradient(145deg,#07111f,#101a36); }
+body[data-wallpaper="aurora"] #desktop { background: radial-gradient(circle at 15% 20%,#215f64,transparent 40%),radial-gradient(circle at 80% 25%,#4b2f67,transparent 42%),#081a26; }
+body[data-wallpaper="graphite"] #desktop { background: linear-gradient(135deg,#20242b,#08090b); }
+button, .file-button, input, select { font: inherit; }
+button, .file-button { border: 1px solid var(--line); border-radius: 8px; background: #18283e; color: var(--ink); padding: .58rem .75rem; cursor: pointer; }
+button:hover, .file-button:hover { border-color: var(--accent); }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#desktop { position: fixed; inset: 0 0 48px; overflow: hidden; }
+#desktop-icons { display: grid; grid-auto-flow: column; grid-template-rows: repeat(auto-fill, 88px); gap: 8px; padding: 18px; width: min-content; height: 100%; }
+.desktop-icon { width: 88px; height: 80px; padding: 5px; display: grid; place-items: center; background: transparent; border-color: transparent; text-shadow: 0 2px 4px #000; }
+.desktop-icon span { font-size: 2rem; }.desktop-icon b { font-size: .78rem; overflow: hidden; width: 100%; text-overflow: ellipsis; }
+#taskbar { position: fixed; inset: auto 0 0; height: 48px; display: flex; gap: 8px; align-items: center; padding: 6px; background: rgba(5,10,18,.94); border-top: 1px solid var(--line); }
+#tasks { display: flex; gap: 6px; } #status { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #b9c9d8; } #status.error, .error { color: #ff9d9d; }.brand { border-color: var(--accent); font-weight: 800; }
+.widget { position: absolute; width: 170px; padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: rgba(5,13,25,.7); backdrop-filter: blur(10px); font-weight: 700; text-align: center; }
+.app-window { position: absolute; width: min(760px,75vw); height: min(520px,70vh); min-width: 280px; min-height: 180px; resize: both; overflow: hidden; border: 1px solid var(--accent); border-radius: 12px; background: #fff; box-shadow: 0 20px 60px #0009; }
+.app-window > header, dialog > header { height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 6px 8px 6px 12px; background: #0c192a; color: var(--ink); user-select: none; touch-action: none; }
+.app-window header nav { display: flex; gap: 4px; }.app-window header button { padding: 2px 9px; }.app-window iframe { width: 100%; height: calc(100% - 40px); border: 0; background: white; }
+.app-window.maximized { inset: 8px 8px 8px !important; width: auto; height: auto; resize: none; }.app-window.minimized { display: none; }
+dialog { width: min(520px,calc(100vw - 24px)); padding: 0 0 18px; border: 1px solid var(--accent); border-radius: 12px; color: var(--ink); background: var(--panel); } dialog::backdrop { background: #0009; } dialog h2 { margin: 0; font-size: 1rem; }.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px; }.file-button input { display: none; }.note { margin: 0 16px; color: #b9c9d8; }#library-list { list-style: none; padding: 12px 18px; }#library-list li { display: flex; justify-content: space-between; gap: 10px; margin: 8px 0; }#library-list li > :first-child { flex: 1; text-align: left; }.danger { color: #ffb6b6; }
+#settings-form, #build-form { display: grid; gap: 12px; padding: 18px; }#settings-form label, #build-form label { display: grid; gap: 5px; }input,select { border: 1px solid var(--line); border-radius: 7px; padding: .6rem; color: var(--ink); background: #0b1728; }
+.builder-page { overflow: auto; background: #07111f; }.builder-shell { min-height: 100vh; display: grid; grid-template-columns: minmax(300px,440px) 1fr; }.builder-form { padding: 24px; }.builder-form #status { display: block; margin: 12px 0; white-space: normal; }.builder-shell iframe { width: 100%; height: 100vh; border: 0; background: white; }
+@media (max-width: 760px) { .builder-shell { grid-template-columns: 1fr; }.builder-shell iframe { height: 70vh; }.app-window { width: calc(100vw - 16px); height: calc(100vh - 72px); left: 8px !important; top: 8px !important; }.menu-grid { grid-template-columns: 1fr; }#status { font-size: .75rem; } }

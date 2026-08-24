@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>VAiOS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-wallpaper="midnight">
+  <main id="desktop" aria-label="VAiOS desktop">
+    <div id="desktop-icons" aria-label="Desktop items"></div>
+    <aside class="widget" data-widget="clock" id="clock-widget">--:--</aside>
+    <aside class="widget" data-widget="storage" id="storage-widget">0 apps installed</aside>
+    <div id="windows"></div>
+  </main>
+  <footer id="taskbar">
+    <button data-panel="#system-menu" class="brand">VAiOS</button>
+    <div id="tasks" aria-label="Open applications"></div>
+    <output id="status" aria-live="polite">Ready. Import a .vaios app or open the package builder.</output>
+    <button data-panel="#library">Apps</button>
+  </footer>
+
+  <dialog id="system-menu">
+    <header><h2>System</h2><button data-close>×</button></header>
+    <div class="menu-grid">
+      <label class="file-button">Install .vaios<input id="import-app" type="file" accept=".vaios,application/json"></label>
+      <button id="open-builder">Package Builder</button>
+      <button id="new-folder">New desktop folder</button>
+      <button id="export-backup">Export complete JSONL</button>
+      <label class="file-button">Restore JSONL<input id="import-backup" type="file" accept=".jsonl,application/x-ndjson"></label>
+      <button data-panel="#settings">Settings</button>
+    </div>
+    <p class="note">Backups abort if any IndexedDB app source cannot be read. Partial restore images are never emitted.</p>
+  </dialog>
+
+  <dialog id="library">
+    <header><h2>App library</h2><button data-close>×</button></header>
+    <ul id="library-list"></ul>
+  </dialog>
+
+  <dialog id="settings">
+    <header><h2>Desktop settings</h2><button data-close>×</button></header>
+    <form id="settings-form">
+      <label>Accent <input id="accent" type="color"></label>
+      <label>Wallpaper <select id="wallpaper"><option value="midnight">Midnight</option><option value="aurora">Aurora</option><option value="graphite">Graphite</option></select></label>
+      <label><input id="toggle-clock" type="checkbox"> Clock widget</label>
+      <label><input id="toggle-storage" type="checkbox"> Storage widget</label>
+    </form>
+  </dialog>
+  <script type="module" src="src/desktop.mjs"></script>
+</body>
+</html>
