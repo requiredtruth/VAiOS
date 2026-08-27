@@ -67,3 +67,8 @@ Large browser-desktop projects such as daedalOS provide broad operating-system s
 Donations can fund additional production time and may request priority for a compatible direction through the funded-direction issue template using a public transaction hash. They do not guarantee implementation or purchase ownership, returns, deadlines, or support. See [SUPPORT.md](SUPPORT.md) and verify the asset and exact network before sending.
 
 MIT licensed. The exact package and restore contracts are in [PROJECT_SPEC.md](PROJECT_SPEC.md).
+
+
+## Standard launcher
+
+`./run.sh` is the normal entry point. It runs `./install.sh` automatically when setup is missing, then opens the PySide6 control panel with live output and actions for the demo, tests, repair, and stop. Use `./cli.sh` for CLI-only operation.
